@@ -29,6 +29,11 @@ class ProductController extends Controller
                 $products->orderBy('price',$sortP);
             }
 
+            // product sort with created time 
+            if($sortCT= $request->sortCT){
+                $products->orderBy('created_at',$sortCT);
+            }
+
             // limit per page with pagination
             $limit = $request->limit;
             if(!isset($limit)) $limit = 20;//if limit not setted then defalut limt will be 20 for pagination
