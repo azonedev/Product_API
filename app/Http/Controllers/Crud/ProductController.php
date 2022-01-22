@@ -15,7 +15,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $products = Product::paginate(20);
+            return $this->returnWithSuccess('All product',$products);
+
+        } catch (\Exception $ex) {
+            return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
+        }
     }
 
     /**
