@@ -19,6 +19,10 @@ class ProductController extends Controller
 
             $products = Product::query();
 
+            // search based on title & description
+            if($search = $request->search){
+                $products->whereRaw("title LIKE '%". $search . "%'")->orWhereRaw("description LIKE '%". $search . "%'");
+            }
 
             // limit per page with pagination
             $limit = $request->limit;
