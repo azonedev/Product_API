@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::all();
     }
 
     /**
@@ -97,7 +97,7 @@ class CategoryController extends Controller
     {
         try {
             $category->delete();
-            return $this->returnWithSuccess('Category deleted',null, 204);
+            return $this->returnWithSuccess('Category deleted',null);
         } catch (\Exception $ex) {
             return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
         }
