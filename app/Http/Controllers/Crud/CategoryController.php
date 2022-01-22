@@ -16,7 +16,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        try {
+
+            $category = Category::withCount('products')->get()->toArray();
+            return $this->returnWithSuccess('List all categories and the numbers of products inside each categories. ',$category);
+
+        } catch (\Exception $ex) {
+            return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
+        }
+
     }
 
     /**
