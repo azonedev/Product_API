@@ -34,6 +34,11 @@ class ProductController extends Controller
                 $products->orderBy('created_at',$sortCT);
             }
 
+            // product sort with updated time 
+            if($sortUT= $request->sortUT){
+                $products->orderBy('updated_at',$sortUT);
+            }
+
             // limit per page with pagination
             $limit = $request->limit;
             if(!isset($limit)) $limit = 20;//if limit not setted then defalut limt will be 20 for pagination
