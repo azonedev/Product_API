@@ -91,8 +91,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        try{
+            $product->delete();
+            return $this->returnWithSuccess('Product deleted',null);
+        }catch(\Exception $ex){
+            return $this->returnWithError('Opps, operation failed !', $ex->getMessage());
+        }
     }
 }
