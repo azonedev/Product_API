@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Crud;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 
 class CategoryController extends Controller
 {
@@ -53,9 +54,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        try {
+            return $this->returnWithSuccess('Single category data retrived by category_id',$category);
+        } catch (\Exception $ex) {
+            return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
+        }
     }
 
     /**
