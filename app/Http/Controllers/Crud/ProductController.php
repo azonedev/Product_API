@@ -24,6 +24,11 @@ class ProductController extends Controller
                 $products->whereRaw("title LIKE '%". $search . "%'")->orWhereRaw("description LIKE '%". $search . "%'");
             }
 
+            // product sort with price 
+            if($sortP= $request->sortP){
+                $products->orderBy('price',$sortP);
+            }
+
             // limit per page with pagination
             $limit = $request->limit;
             if(!isset($limit)) $limit = 20;//if limit not setted then defalut limt will be 20 for pagination
