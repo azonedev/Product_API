@@ -1,6 +1,6 @@
 # Product CRUD API 
 ------
-I have generate 100K+ fake products & 30+ categories with faker & deployed on [live](https://product-api.abdullahme.com/)
+I have generate 100K+ fake products & 30+ categories with faker & deployed on [live](https://product-api.abdullahme.com/api/v1/products)
 
 ## API Endpoints :
 
@@ -39,3 +39,43 @@ I have generate 100K+ fake products & 30+ categories with faker & deployed on [l
     Method : DELETE 
     URL : BASE/api/v1/categories/{category_id} 
     #delete category
+
+### Products : 
+
+    Method : GET
+    URL : BASE/api/v1/products 
+
+    example url : BASE/api/v1/products?limit=25&sortP=asc&sortCT=desc&sortUT=asc&search=nisi
+
+    Accepted prametter : search, limit, sortP, sortCT, sortUT, 
+
+    #list of all products & search products by title and description, then filter and sort them based on price, create and update time 
+
+Note : sortP == sort by price, sortCT = sort by create time, sortUP = sort by update time
+<br>
+    
+    Method : POST
+    URL : BASE/api/v1/products 
+
+    Accepted prametter : category_id, title, description, price
+    
+    #Create product
+<br>
+    
+    Method : PUT
+    URL : BASE/api/v1/products 
+
+    Accepted prametter : category_id, title, description, price
+    
+    #Update product
+<br>
+    
+    Method : GET
+    URL : BASE/api/v1/products/{product_id} 
+
+    #get single product using product_id
+<br>
+    
+    Method : DELETE 
+    URL : BASE/api/v1/products/{product_id} 
+    #delete product
