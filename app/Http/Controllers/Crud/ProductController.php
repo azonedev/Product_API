@@ -13,11 +13,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $products = Product::paginate(20);
-            return $this->returnWithSuccess('All product',$products);
+
+            $products = Product::query();
+
+
+            // limit per page with pagination
+            $limit = $request->limit;
+            if(!isset($limit)) $limit = 20;//if limit not setted then defalut limt will be 20 for pagination
+
+            $products = $products->paginate($limit);
+
+            return $this->returnWithSuccess('All products',$products);
 
         } catch (\Exception $ex) {
             return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
