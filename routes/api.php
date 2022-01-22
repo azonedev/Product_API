@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\Crud\CategoryController;
 use App\Http\Controllers\Crud\ProductController;
 use Illuminate\Http\Request;
@@ -28,6 +29,9 @@ Route::prefix('v1')->group(function () {
 
     Route::resource('categories',CategoryController::class);
     Route::resource('products',ProductController::class);
+
+    // show products by category id
+    Route::get('category-products/{category_id}', CategoryProductController::class);
 });
 
 
