@@ -79,3 +79,20 @@ Note : sortP == sort by price, sortCT = sort by create time, sortUP = sort by up
     Method : DELETE 
     URL : BASE/api/v1/products/{product_id} 
     #delete product
+
+
+## How I plan & solve the task : 
+
+To understand the requirement, I read that very carefully 
+
+- design the system on paper & its work flow 
+- draw database schema 
+- plan about how can i show the data on each route as per requirement
+- the jump to development
+
+Database schema : 
+
+<a href="https://ibb.co/zHBC61x"><img src="https://i.ibb.co/HpbRh04/Screenshot-1.png" alt="Screenshot-1" border="0"></a>
+
+I love the eloquent query here for coding quality and readability. It's readable and nice. Whereas DB query is complecated .
+
