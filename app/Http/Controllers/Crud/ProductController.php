@@ -51,9 +51,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        try {
+            return $this->returnWithSuccess('Single product data retrived by product_id',$product);
+        } catch (\Exception $ex) {
+            return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
+        }
     }
 
     /**
