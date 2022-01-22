@@ -36,8 +36,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
-        return response()->json($category, 201);
+        try {
+
+            $category = Category::create($request->all());
+            return $this->returnWithSuccess('Category created',$category, 201);
+
+        } catch (\Exception $ex) {
+            return $this->returnWithError('Opps, operation failed! ',$ex->getMessage());
+        }
+
     }
 
     /**
